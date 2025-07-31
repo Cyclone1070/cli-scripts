@@ -1,5 +1,7 @@
 # CLI scripts for my opinionated ways of using the terminal
 
+Paste into .zshrc the content of the files you wanna add you're good to go!
+
 ## Marked Operations, support glob patterns
 
 - marked copy (mcp): mark files for copying.
