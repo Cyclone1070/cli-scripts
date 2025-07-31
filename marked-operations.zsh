@@ -45,6 +45,9 @@ function mp {
         fi
     done
 
+    local files_moved=false
+    local files_copied=false
+
     # Move files to each specified directory
     if [ ${#M_MOVE_FILES[@]} -gt 0 ]; then
         for file in "${M_MOVE_FILES[@]}"; do
@@ -55,8 +58,11 @@ function mp {
         done
         # Clear the array after moving files
         M_MOVE_FILES=()
-    elif [ ${#M_COPY_FILES[@]} -gt 0 ]; then
-        # Copy files to each specified directory
+        files_moved=true
+    fi
+    
+    # Copy files to each specified directory
+    if [ ${#M_COPY_FILES[@]} -gt 0 ]; then
         for file in "${M_COPY_FILES[@]}"; do
             for dest_dir in "${dest_dirs[@]}"; do
                 cp -r "$file" "$dest_dir"
@@ -65,7 +71,10 @@ function mp {
         done
         # Clear the array after copying files
         M_COPY_FILES=()
-    else
+        files_copied=true
+    fi
+
+    if ! $files_moved && ! $files_copied; then
         echo "No file marked for copying or moving"
     fi
 }
@@ -77,18 +86,25 @@ function mr {
     echo "Reset marked files"
 }
 # marked list to list the marked files
-function ml {
+function mls {
+    local files_listed=false
     if [ ${#M_MOVE_FILES[@]} -gt 0 ]; then
         echo "Files marked for moving:"
         for file in "${M_MOVE_FILES[@]}"; do
             echo "$file"
         done
-    elif [ ${#M_COPY_FILES[@]} -gt 0 ]; then
+        files_listed=true
+    fi
+
+    if [ ${#M_COPY_FILES[@]} -gt 0 ]; then
         echo "Files marked for copying:"
         for file in "${M_COPY_FILES[@]}"; do
             echo "$file"
         done
-    else
+        files_listed=true
+    fi
+
+    if ! $files_listed; then
         echo "No file marked for copying or moving"
     fi
 }
