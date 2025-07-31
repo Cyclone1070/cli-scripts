@@ -1,3 +1,5 @@
+# ultra tmux session management aliases
+
 # --- Helper function to ensure a 'default' session exists ---
 # This is used by creation and detach commands to guarantee a fallback.
 _ensure_default_session_exists() {

@@ -1,4 +1,5 @@
 # script for seperate lines copy paste
+
 # Initialize arrays to store paths of files to copy and move
 M_COPY_FILES=()
 M_MOVE_FILES=()
