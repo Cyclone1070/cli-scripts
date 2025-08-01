@@ -1,6 +1,6 @@
 # CLI scripts for my opinionated ways of using the terminal
 
-Paste into .zshrc the content of the files you wanna add you're good to go!
+Install these plugins via oh-my-zsh or paste them into your `.zshrc` file.
 
 ## Marked Operations, support glob patterns
 

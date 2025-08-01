@@ -1,14 +1,12 @@
-# ultra tmux session management aliases
-
 # --- Helper function to ensure a 'default' session exists ---
 # This is used by creation and detach commands to guarantee a fallback.
 _ensure_default_session_exists() {
-	command tmux new-session -d -s default
+  if ! command tmux has-session -t default 2>/dev/null; then
+    command tmux new-session -d -s default
   fi
 }
 
 # Smartly attach/switch to the first parameter (with partial match),
-  if ! command tmux has-session -t default 2>/dev/null; then
 # then create new sessions for all subsequent parameters.
 # If the first parameter doesn't match any existing session,
 # it creates all specified sessions and attaches to the first one.
