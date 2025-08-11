@@ -10,7 +10,7 @@ Install these plugins via oh-my-zsh or paste them into your `.zshrc` file.
 - marked ls (mls): list current marked files.
 - marked reset (mr): reset all current marked files.
 
-## Tmux session management
+## Tmux session management (t-session-mux)
 
 - t: Smartly attach, switch, or create sessions.
 - ta: Attach to a session (or show chooser).
